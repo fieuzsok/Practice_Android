@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tdt.it.com.lab1_3.Lab1_3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="140dp"
+            android:layout_height="19dp"
+            android:text="Android radio buttons"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+
+
+
+        <RadioGroup
+            android:layout_width="293dp"
+            android:layout_height="172dp"
+            android:id="@+id/radiogroup"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="51dp">
+
+
+
+                <RadioButton
+                    android:id="@+id/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Android" />
+
+                <RadioButton
+                    android:id="@+id/win"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Window" />
+
+                <RadioButton
+                    android:id="@+id/ios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="iOS" />
+
+                <RadioButton
+                    android:id="@+id/rim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RIM" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/resultbtn"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:text="Click Here To See Result"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="231dp" />
+
+        <TextView
+            android:id="@+id/output"
+            android:layout_width="271dp"
+            android:layout_height="259dp"
+            android:maxLines="10"
+            android:text="Result: "
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="304dp" />
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tdt.it.com.lab1.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="50dp"
+        tools:layout_margin="50dp">
+
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter your content here"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="85dp"
+            tools:layout_editor_absoluteY="137dp" />
+
+        <Button
+            android:id="@+id/showbtn"
+            android:layout_width="98dp"
+            android:layout_height="48dp"
+            android:text="Click Me"
+            tools:layout_editor_absoluteX="133dp"
+            tools:layout_editor_absoluteY="229dp" />
+
+
+        <TextView
+            android:id="@+id/textOutput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="TextView to display your content"
+            tools:layout_editor_absoluteX="154dp"
+            tools:layout_editor_absoluteY="318dp" />
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
