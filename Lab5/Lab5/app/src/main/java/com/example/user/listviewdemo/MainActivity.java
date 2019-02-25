@@ -15,15 +15,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends ListActivity {
     private ArrayList<Model> items;
-    private ListView listView;
-    private ArrayAdapter<String> adapter;
     private TextView txt;
+   // private CheckBox cb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    txt = findViewById(R.id.textView);
+        txt = findViewById(R.id.textView);
         items = new ArrayList<>();
         items.add(new Model("IphoneX",true));
         items.add(new Model("Samsung",false));
@@ -38,6 +37,7 @@ public class MainActivity extends ListActivity {
         items.add(new Model("Nokia2",false));
         items.add(new Model("Oppo2",false));
 
+
         //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, items);
         CustomAdapter customAdapter = new CustomAdapter(this,items);
         setListAdapter(customAdapter);
@@ -50,12 +50,13 @@ public class MainActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         String itemData = items.get(position).getType();
-        CheckBox cb  = findViewById(R.id.checkBox);
+        CheckBox cb = v.findViewById(R.id.checkBox);
+        cb.setChecked(!cb.isChecked());
         boolean isCheck = cb.isChecked();
         items.get(position).setCheck(isCheck);
         cb.setChecked(isCheck);
         txt.setText(itemData);
 
-        Toast.makeText(MainActivity.this,"Chọn "  ,Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this,"Chọn " + isCheck  ,Toast.LENGTH_LONG).show();
     }
 }
