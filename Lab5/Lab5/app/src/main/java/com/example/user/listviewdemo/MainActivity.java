@@ -1,30 +1,32 @@
 package com.example.user.listviewdemo;
 
-import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends AppCompatActivity {
     private ArrayList<Model> items;
     private TextView txt;
-   // private CheckBox cb;
+    CustomAdapter customAdapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txt = findViewById(R.id.textView);
+        listView= findViewById(R.id.lst);
         items = new ArrayList<>();
-        items.add(new Model("IphoneX",true));
+        items.add(new Model("IphoneX",f));
         items.add(new Model("Samsung",false));
         items.add(new Model("Nokia",false));
         items.add(new Model("Oppo",false));
@@ -37,26 +39,39 @@ public class MainActivity extends ListActivity {
         items.add(new Model("Nokia2",false));
         items.add(new Model("Oppo2",false));
 
-
-        //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, items);
-        CustomAdapter customAdapter = new CustomAdapter(this,items);
-        setListAdapter(customAdapter);
-
-
+        customAdapter = new CustomAdapter(this,items);
+        listView.setAdapter(customAdapter);
+        registerForContextMenu(listView);
 
     }
 
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        String itemData = items.get(position).getType();
-        CheckBox cb = v.findViewById(R.id.checkBox);
-        cb.setChecked(!cb.isChecked());
-        boolean isCheck = cb.isChecked();
-        items.get(position).setCheck(isCheck);
-        cb.setChecked(isCheck);
-        txt.setText(itemData);
 
-        Toast.makeText(MainActivity.this,"Chọn " + isCheck  ,Toast.LENGTH_LONG).show();
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_context, menu);
+        AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        Model selectedModel = items.get(adapterContextMenuInfo.position);
+        menu.setHeaderTitle(selectedModel.getType());
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int position = adapterContextMenuInfo.position;
+        switch ((item.getItemId())) {
+            case R.id.deleteBtn:
+                items.remove(position);
+                customAdapter.notifyDataSetChanged();
+            default:
+                View view = adapterContextMenuInfo.targetView;
+                CheckBox ckb = view.findViewById(R.id.checkBox);
+                ckb.setChecked(!ckb.isChecked());
+                item.setChecked(ckb.isChecked());
+                return super.onContextItemSelected(item);
+        }
+
+
     }
 }

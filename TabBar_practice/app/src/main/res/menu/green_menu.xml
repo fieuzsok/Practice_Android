@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_cam_green"
+        android:orderInCategory="120"
+        android:icon="@drawable/icon_camera"
+        app:showAsAction="ifRoom|withText"
+        android:title="Camera"
+         />
+
+
+    <item
+        android:id="@+id/setting_green"
+        android:orderInCategory="180"
+        app:showAsAction="never"
+        android:title="Settings Green"/>
+    <item
+        android:id="@+id/about_green"
+        android:orderInCategory="180"
+        app:showAsAction="never"
+        android:title="About_Green"/>
+
+</menu>
